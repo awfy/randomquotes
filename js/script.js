@@ -8,7 +8,6 @@ project 1 - A Random Quote Generator
  * Use Math to give us a random number from 0 to 255 (the acceptable range for
  * an RGB value) and then use parseInt to provide a round number.
  */
-
 const getRandomRGB = () => {
   return parseInt(Math.random() * 255);
 }
@@ -22,11 +21,20 @@ const getRandomRGB = () => {
  * colors. Ideally we'd incorporate the minimum contrast expectations into the 
  * randomly generated RGB values, for now they're left as they are.
  */
-
 const getRandomBackground = () => {
   document.querySelector('body').style.backgroundColor = `rgb(${getRandomRGB()}, ${getRandomRGB()}, ${getRandomRGB()})`;
 }
 
+/**
+ * The array of quotes which will be printed to the page on load, button click 
+ * and auto-refresh.
+ * 
+ *  - quote: The core body of text of the quote itself.
+ *  - source: The individual or group responsible for the quote.
+ *  - year: Which year it occured in, can be a number or string for ranges.
+ *  - citation: Where this quote was spoken or written.
+ *  - url: Link to a reference for the quote in question.
+ */
 const quotes = [
   {
     quote: 'Those who cannot remember the past are condemned to repeat it.', 
@@ -59,11 +67,20 @@ const quotes = [
   },
 ];
 
+/**
+ * Provides us with the identifier for a random quote.
+ */
 const getRandomQuote = () => {
   const random = Math.floor(Math.random() * quotes.length);
   return quotes[random];
 };
 
+/**
+ * Using the random quote identifier from above we build the quote along with 
+ * the corresponding pieces of information. Since some quotes don't have 
+ * citations, urls, or years, these are only shown if the quote happens to 
+ * have them.
+ */
 const printQuote = () => {
   getRandomBackground();
   const quote = getRandomQuote();
@@ -80,8 +97,8 @@ const printQuote = () => {
   html += `</p>`;
   document.querySelector('#quote-box').innerHTML = html;
 };
-printQuote();
 
+printQuote(); // The initial print to the page on load.
 setInterval(printQuote, 15000); // Prints a new quote to the page every 15 seconds.
 
 /***
