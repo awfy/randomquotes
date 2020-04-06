@@ -1,9 +1,3 @@
-/******************************************
-Treehouse FSJS Techdegree:
-project 1 - A Random Quote Generator
-******************************************/
-
-
 /**
  * Use Math to give us a random number from 0 to 255 (the acceptable range for
  * an RGB value) and then use parseInt to provide a round number.
@@ -88,7 +82,8 @@ const printQuote = () => {
   if (quote.citation) {
     html += `<span class="citation">`;
     html += quote.url ? 
-      `<a class="citation-url" href="${quote.url}" target="_blank">${quote.citation}</a>` : quote.citation; // Wraps the citation in an anchor tag if a URL is provided.
+      `<a class="citation-url" href="${quote.url}" target="_blank">${quote.citation}</a>` 
+      : quote.citation; // Wraps the citation in an anchor tag if a URL is provided.
     html += `</span>`;
   }
   if (quote.year) {
